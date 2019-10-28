@@ -318,7 +318,6 @@
 }
 
 - (void) dealloc {
-    dispatch_release(modbusQueue);
     modbus_free(mb);
 }
 

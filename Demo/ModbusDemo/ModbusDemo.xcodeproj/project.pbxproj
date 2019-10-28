@@ -18,8 +18,6 @@
 		46A2D94E155DBA51005AB2A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46A2D94C155DBA51005AB2A9 /* InfoPlist.strings */; };
 		46A2D950155DBA51005AB2A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A2D94F155DBA51005AB2A9 /* main.m */; };
 		46A2D954155DBA51005AB2A9 /* LJKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A2D953155DBA51005AB2A9 /* LJKAppDelegate.m */; };
-		46A2D957155DBA51005AB2A9 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A2D955155DBA51005AB2A9 /* MainStoryboard_iPhone.storyboard */; };
-		46A2D95A155DBA51005AB2A9 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A2D958155DBA51005AB2A9 /* MainStoryboard_iPad.storyboard */; };
 		46A2D95D155DBA51005AB2A9 /* LJKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A2D95C155DBA51005AB2A9 /* LJKViewController.m */; };
 		46A2D965155DBA51005AB2A9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A2D964155DBA51005AB2A9 /* SenTestingKit.framework */; };
 		46A2D966155DBA51005AB2A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A2D943155DBA50005AB2A9 /* UIKit.framework */; };
@@ -63,8 +61,6 @@
 		46A2D951155DBA51005AB2A9 /* ModbusDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ModbusDemo-Prefix.pch"; sourceTree = "<group>"; };
 		46A2D952155DBA51005AB2A9 /* LJKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJKAppDelegate.h; sourceTree = "<group>"; };
 		46A2D953155DBA51005AB2A9 /* LJKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJKAppDelegate.m; sourceTree = "<group>"; };
-		46A2D956155DBA51005AB2A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		46A2D959155DBA51005AB2A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		46A2D95B155DBA51005AB2A9 /* LJKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJKViewController.h; sourceTree = "<group>"; };
 		46A2D95C155DBA51005AB2A9 /* LJKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJKViewController.m; sourceTree = "<group>"; };
 		46A2D963155DBA51005AB2A9 /* ModbusDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModbusDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +69,7 @@
 		46A2D96E155DBA51005AB2A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		46A2D970155DBA51005AB2A9 /* ModbusDemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModbusDemoTests.h; sourceTree = "<group>"; };
 		46A2D971155DBA51005AB2A9 /* ModbusDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModbusDemoTests.m; sourceTree = "<group>"; };
+		78DA9BF52366DE0E002466F1 /* ModbusDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ModbusDemo.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,10 +131,9 @@
 		46A2D949155DBA51005AB2A9 /* ModbusDemo */ = {
 			isa = PBXGroup;
 			children = (
+				78DA9BF52366DE0E002466F1 /* ModbusDemo.entitlements */,
 				46A2D952155DBA51005AB2A9 /* LJKAppDelegate.h */,
 				46A2D953155DBA51005AB2A9 /* LJKAppDelegate.m */,
-				46A2D955155DBA51005AB2A9 /* MainStoryboard_iPhone.storyboard */,
-				46A2D958155DBA51005AB2A9 /* MainStoryboard_iPad.storyboard */,
 				46A2D95B155DBA51005AB2A9 /* LJKViewController.h */,
 				46A2D95C155DBA51005AB2A9 /* LJKViewController.m */,
 				46A2D94A155DBA51005AB2A9 /* Supporting Files */,
@@ -258,12 +254,18 @@
 			attributes = {
 				CLASSPREFIX = LJK;
 				LastUpgradeCheck = 0430;
+				TargetAttributes = {
+					46A2D93E155DBA50005AB2A9 = {
+						DevelopmentTeam = 6F5PJCJ8EZ;
+					};
+				};
 			};
 			buildConfigurationList = 46A2D939155DBA50005AB2A9 /* Build configuration list for PBXProject "ModbusDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 46A2D934155DBA50005AB2A9;
@@ -283,8 +285,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46A2D94E155DBA51005AB2A9 /* InfoPlist.strings in Resources */,
-				46A2D957155DBA51005AB2A9 /* MainStoryboard_iPhone.storyboard in Resources */,
-				46A2D95A155DBA51005AB2A9 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,22 +357,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		46A2D955155DBA51005AB2A9 /* MainStoryboard_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				46A2D956155DBA51005AB2A9 /* en */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		46A2D958155DBA51005AB2A9 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				46A2D959155DBA51005AB2A9 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		46A2D96D155DBA51005AB2A9 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -434,10 +418,19 @@
 		46A2D976155DBA51005AB2A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_ENTITLEMENTS = ModbusDemo/ModbusDemo.entitlements;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = 6F5PJCJ8EZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ModbusDemo/ModbusDemo-Prefix.pch";
 				INFOPLIST_FILE = "ModbusDemo/ModbusDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iUtvikler.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -445,10 +438,19 @@
 		46A2D977155DBA51005AB2A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_ENTITLEMENTS = ModbusDemo/ModbusDemo.entitlements;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = 6F5PJCJ8EZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ModbusDemo/ModbusDemo-Prefix.pch";
 				INFOPLIST_FILE = "ModbusDemo/ModbusDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iUtvikler.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
