@@ -6,8 +6,15 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "modbus.h"
+
+//! Project version number for ObjectiveLibModbus.
+FOUNDATION_EXPORT double ObjectiveLibModbusVersionNumber;
+
+//! Project version string for ObjectiveLibModbus.
+FOUNDATION_EXPORT const unsigned char ObjectiveLibModbusVersionString[];
+
 
 typedef enum {
     kInputBits,
@@ -16,28 +23,75 @@ typedef enum {
     kRegisters
 } functionType;
 
-@interface ObjectiveLibModbus : NSObject {
-    modbus_t *mb;
-    dispatch_queue_t modbusQueue;
-}
+typedef void(^ObjectiveLibModbusErrorBlock)(NSError *error);
+typedef void(^ObjectiveLibModbusWriteSuccessBlock)(void);
+typedef void(^ObjectiveLibModbusReadSuccessBlock)(NSArray *array);
+
+@interface ObjectiveLibModbus : NSObject
 
 @property (strong, nonatomic) NSString *ipAddress;
-- (id) initWithTCP: (NSString *)ipAddress port: (int)port device:(int)device;
-- (BOOL) setupTCP: (NSString *)ipAddress port: (int)port device:(int)device;
-- (BOOL) connectWithError:(NSError**)error;
-- (void) connect:(void (^)())success failure:(void (^)(NSError *error))failure;
-- (void) disconnect;
 
-- (void) writeType:(functionType)type address:(int)address to:(int)value success:(void (^)())success failure:(void (^)(NSError *error))failure;
--(void)readType:(functionType)type startAddress:(int)address count:(int)count success:(void (^)(NSArray *array))success failure:(void (^)(NSError *error))failure;
+- (instancetype)initWithTCP:(NSString *)ipAddress
+                       port:(int)port
+                     device:(int)device;
 
-- (void) writeBit:(int)address to:(BOOL)status success:(void (^)())success failure:(void (^)(NSError *error))failure;
-- (void) writeRegister:(int)address to:(int)value success:(void (^)())success failure:(void (^)(NSError *error))failure;
-- (void) readBitsFrom:(int)startAddress count:(int)count success:(void (^)(NSArray *array))success failure:(void (^)(NSError *error))failure;
-- (void) readInputBitsFrom:(int)startAddress count:(int)count success:(void (^)(NSArray *array))success failure:(void (^)(NSError *error))failure;
-- (void) readRegistersFrom:(int)startAddress count:(int)count success:(void (^)(NSArray *array))success failure:(void (^)(NSError *error))failure;
-- (void) readInputRegistersFrom:(int)startAddress count:(int)count success:(void (^)(NSArray *array))success failure:(void (^)(NSError *error))failure;
+- (BOOL)setupTCP:(NSString *)ipAddress
+            port:(int)port
+          device:(int)device;
 
-- (void) writeRegistersFromAndOn:(int)address toValues:(NSArray*)numberArray success:(void (^)())success failure:(void (^)(NSError *error))failure;
+- (BOOL)connectWithError:(NSError **)error;
+
+- (void)connect:(void (^)(void))success
+        failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)disconnect;
+
+
+- (void)writeType:(functionType)type
+          address:(int)address
+               to:(int)value
+          success:(ObjectiveLibModbusWriteSuccessBlock)success
+          failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)readType:(functionType)type
+    startAddress:(int)address
+           count:(int)count
+         success:(ObjectiveLibModbusReadSuccessBlock)success
+         failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)writeBit:(int)address
+              to:(BOOL)status
+         success:(ObjectiveLibModbusWriteSuccessBlock)success
+         failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)writeRegister:(int)address
+                   to:(int)value
+              success:(ObjectiveLibModbusWriteSuccessBlock)success
+              failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)readBitsFrom:(int)startAddress
+               count:(int)count
+             success:(ObjectiveLibModbusReadSuccessBlock)success
+             failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)readInputBitsFrom:(int)startAddress
+                    count:(int)count
+                  success:(ObjectiveLibModbusReadSuccessBlock)success
+                  failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)readRegistersFrom:(int)startAddress
+                    count:(int)count
+                  success:(ObjectiveLibModbusReadSuccessBlock)success
+                  failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)readInputRegistersFrom:(int)startAddress
+                         count:(int)count
+                       success:(ObjectiveLibModbusReadSuccessBlock)success
+                       failure:(ObjectiveLibModbusErrorBlock)failure;
+
+- (void)writeRegistersFromAndOn:(int)address
+                       toValues:(NSArray *)numberArray
+                        success:(ObjectiveLibModbusWriteSuccessBlock)success
+                        failure:(ObjectiveLibModbusErrorBlock)failure;
 
 @end
